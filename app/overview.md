@@ -6,7 +6,7 @@
 
 ## Introduction
 
-The Privara application provides a consumer-facing interface for creating, managing, and settling confidential invoices on public blockchains. Available on web and iOS, the application abstracts the complexity of FHE operations and cross-chain payments into an intuitive invoicing workflow.
+The Privara application provides a consumer-facing interface for creating, managing, and settling confidential invoices on public blockchains. Available on web and iOS, the application abstracts the complexity of Fhenix CoFHE operations and cross-chain payments into an intuitive invoicing workflow.
 
 ---
 
@@ -50,7 +50,7 @@ Payments credit invoices through homomorphic operations. No plaintext amounts vi
 
 ### Cross-Chain Payment Acceptance
 
-Clients can pay from any CCTP-supported chain. Cross-chain transfers settle to confidential representation on fhEVM.
+Clients can pay from Ethereum Sepolia. Cross-chain transfers settle to confidential representation on Base Sepolia via Fhenix CoFHE.
 
 ---
 
@@ -160,7 +160,7 @@ Withdraw settled funds with cryptographic verification:
 ## Security
 
 - Secure key custody with no private keys on application servers
-- Encrypted storage on-chain via fhEVM
+- Encrypted storage on-chain via Fhenix CoFHE
 - Biometric authentication on iOS
 - Email-based authentication with verification
 
@@ -168,13 +168,13 @@ Withdraw settled funds with cryptographic verification:
 
 ## Screenshots
 
-**Available January 16, 2026**
+**Available January 20, 2026**
 
 ---
 
 ## Try It
 
-**Public testnet opens January 16, 2026**
+**Public testnet opens January 20, 2026**
 
 Join the waitlist at [privara.xyz](https://privara.xyz) for early access notification.
 
@@ -184,15 +184,11 @@ Join the waitlist at [privara.xyz](https://privara.xyz) for early access notific
 
 ### Payment Origination
 
-- Ethereum
-- Base
-- Arbitrum
-- Polygon
-- Avalanche
+- Ethereum Sepolia
 
 ### Settlement
 
-- fhEVM (Zama)
+- Base Sepolia (Fhenix CoFHE)
 
 ### Settlement Asset
 
@@ -200,4 +196,4 @@ Join the waitlist at [privara.xyz](https://privara.xyz) for early access notific
 
 ---
 
-**Extending fhEVM to cross-chain commerce**
+**Extending CoFHE to cross-chain commerce**

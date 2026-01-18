@@ -1,6 +1,6 @@
 # Protocol Architecture
 
-**Confidential Invoice Settlement on fhEVM**
+**Confidential Invoice Settlement on Base Sepolia via Fhenix CoFHE**
 
 ---
 
@@ -8,7 +8,7 @@
 
 Privara is a confidential invoice settlement protocol that combines:
 
-- **FHE-based escrow** for encrypted invoice storage and settlement on Zama fhEVM
+- **FHE-based escrow** for encrypted invoice storage and settlement on Base Sepolia via Fhenix CoFHE
 - **Cross-chain payments** via Circle CCTP V2 for multi-chain payment origination
 - **Decentralized relay** for trustless message delivery between chains
 
@@ -43,7 +43,7 @@ flowchart LR
         C[Deliver]
     end
 
-    subgraph FHE["fhEVM"]
+    subgraph FHE["Base Sepolia + CoFHE"]
         D[Mint]
         E[Wrap]
         F[Escrow]
@@ -53,7 +53,7 @@ flowchart LR
     A --> B --> C --> D --> E --> F --> G
 ```
 
-Payment originates on any CCTP-supported chain → USDC burned and attested → Relayer delivers to fhEVM → Minted and wrapped to confidential token → Invoice escrow updated with encrypted amount → Settlement verified homomorphically.
+Payment originates on Ethereum Sepolia → USDC burned and attested → Relayer delivers to Base Sepolia → Minted and wrapped to confidential token via CoFHE → Invoice escrow updated with encrypted amount → Settlement verified homomorphically.
 
 ---
 
@@ -92,7 +92,7 @@ No plaintext values are exposed at any point in the settlement flow.
 
 ## FHE Capabilities
 
-Privara leverages Zama fhEVM's TFHE implementation:
+Privara leverages Fhenix CoFHE's FHE implementation:
 
 | Capability | Use Case |
 |------------|----------|
@@ -109,7 +109,7 @@ Privara leverages Zama fhEVM's TFHE implementation:
 
 ### Cryptographic Foundation
 
-- **TFHE Security**: Based on Learning With Errors (LWE) hardness assumption
+- **FHE Security**: Based on Learning With Errors (LWE) hardness assumption
 - **No Hardware Trust**: Pure cryptographic guarantees, no TEE dependency
 - **Proof Verification**: ZK proofs validate encrypted input well-formedness
 
@@ -123,9 +123,9 @@ Privara leverages Zama fhEVM's TFHE implementation:
 
 | Component | Assumption |
 |-----------|------------|
-| Zama Infrastructure | Correct FHE computation and key management |
+| Fhenix CoFHE | Correct FHE computation and key management |
 | Circle Validators | Honest attestation of cross-chain messages |
-| fhEVM Network | Consensus integrity |
+| Base Sepolia Network | Consensus integrity |
 
 ---
 
@@ -141,14 +141,14 @@ Decentralized operators ensure reliable cross-chain message delivery:
 
 ## Deployment
 
-**Contract addresses available January 16, 2026**
+**Contract addresses available January 20, 2026**
 
 ### Testnet Networks
 
 | Network | Role |
 |---------|------|
-| Ethereum Sepolia | fhEVM destination |
-| Base Sepolia | CCTP source chain |
+| Base Sepolia | CoFHE destination (core chain) |
+| Ethereum Sepolia | CCTP source chain |
 | Additional chains | Post-launch expansion |
 
 ---
@@ -163,4 +163,4 @@ Decentralized operators ensure reliable cross-chain message delivery:
 
 ---
 
-**Extending fhEVM to cross-chain commerce**
+**Extending CoFHE to cross-chain commerce**

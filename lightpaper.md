@@ -1,12 +1,12 @@
 # Privara: Cross-Chain Confidential Invoice Settlement
 
-**Extending Zama fhEVM to Cross-Chain Commerce**
+**Extending Fhenix CoFHE to Cross-Chain Commerce**
 
 ---
 
 ## Abstract
 
-Privara is a confidential invoice settlement protocol that enables privacy-preserving commercial payments on public blockchains. Using Fully Homomorphic Encryption (FHE), invoice amounts and recipient addresses remain encrypted throughout the entire payment lifecycle. By integrating Circle CCTP V2, Privara extends fhEVM capabilities beyond single-chain applications — enabling confidential transactions to originate from any CCTP-supported chain while settling privately on FHE-enabled networks.
+Privara is a confidential invoice settlement protocol that enables privacy-preserving commercial payments on public blockchains. Using Fully Homomorphic Encryption (FHE), invoice amounts and recipient addresses remain encrypted throughout the entire payment lifecycle. By integrating Circle CCTP V2, Privara extends CoFHE capabilities beyond single-chain applications — enabling confidential transactions to originate from Ethereum Sepolia while settling privately on Base Sepolia via Fhenix CoFHE.
 
 ---
 
@@ -38,11 +38,11 @@ Privara introduces confidential invoice settlement using three core innovations:
 
 ### 1. FHE-Based Invoice Escrow
 
-Invoice data is stored as encrypted values using Zama's TFHE scheme. All operations — payment verification, ownership checks, redemption logic — execute on encrypted values without decryption.
+Invoice data is stored as encrypted values using Fhenix CoFHE. All operations — payment verification, ownership checks, redemption logic — execute on encrypted values without decryption.
 
 ### 2. Cross-Chain Payment Origination
 
-Using Circle CCTP V2, payments can originate from any supported chain. USDC is burned on the source chain, attested by Circle validators, and minted on fhEVM where it's wrapped to a confidential representation.
+Using Circle CCTP V2, payments can originate from Ethereum Sepolia. USDC is burned on the source chain, attested by Circle validators, and minted on Base Sepolia where it's wrapped to a confidential representation via CoFHE.
 
 ### 3. Decentralized Relayer Network
 
@@ -64,21 +64,18 @@ TEE solutions (SGX, TrustZone) rely on hardware manufacturers' security guarante
 
 ### vs. Partial Homomorphic Encryption
 
-Schemes supporting only addition or multiplication cannot handle invoice settlement requirements. Payment verification requires comparisons, redemption requires conditional logic, and ownership verification requires equality checks. TFHE supports all these operations through programmable bootstrapping, enabling unlimited sequential operations without noise accumulation.
+Schemes supporting only addition or multiplication cannot handle invoice settlement requirements. Payment verification requires comparisons, redemption requires conditional logic, and ownership verification requires equality checks. Fhenix CoFHE supports all these operations, enabling flexible FHE computations for invoice settlement.
 
 ---
 
 ## Cross-Chain Architecture
 
-Privara positions fhEVM as a privacy settlement layer for the broader EVM ecosystem:
+Privara positions Fhenix CoFHE on Base Sepolia as a privacy settlement layer for the broader EVM ecosystem:
 
 ```mermaid
 flowchart TB
-    subgraph Source["Source Chains"]
-        S1[Base]
-        S2[Arbitrum]
-        S3[Polygon]
-        S4[Avalanche]
+    subgraph Source["Source Chain"]
+        S1[Ethereum Sepolia]
     end
 
     subgraph Bridge["Circle CCTP V2"]
@@ -90,14 +87,14 @@ flowchart TB
         R1[Message Delivery]
     end
 
-    subgraph Destination["fhEVM Settlement Layer"]
+    subgraph Destination["Base Sepolia + CoFHE Settlement Layer"]
         D1[Mint USDC]
         D2[Wrap to Confidential Token]
         D3[Invoice Escrow]
         D4[Encrypted Settlement]
     end
 
-    S1 & S2 & S3 & S4 --> B1
+    S1 --> B1
     B1 --> B2
     B2 --> R1
     R1 --> D1
@@ -116,9 +113,9 @@ flowchart TB
 
 ## Technology Stack
 
-### Zama fhEVM
+### Fhenix CoFHE
 
-- **TFHE Scheme**: Torus Fully Homomorphic Encryption with programmable bootstrapping
+- **FHE Scheme**: Fully Homomorphic Encryption via Fhenix coprocessor
 - **Encrypted Primitives**: Native support for encrypted integers, addresses, and booleans
 - **Homomorphic Operations**: Arithmetic, comparison, and conditional operations on ciphertexts
 
@@ -160,7 +157,7 @@ Native mobile experience with secure key management, biometric authentication, a
 
 | Milestone | Target |
 |-----------|--------|
-| Public Testnet | January 16, 2026 |
+| Public Testnet | January 20, 2026 |
 | Security Audits | Q1 2026 |
 | Mainnet Launch | Q2 2026 (tentative) |
 
@@ -168,10 +165,10 @@ Native mobile experience with secure key management, biometric authentication, a
 
 ## Conclusion
 
-Privara demonstrates that fhEVM is not limited to single-chain applications. By integrating Circle CCTP V2, we enable confidential settlement from any CCTP-supported chain — positioning Zama's FHE technology as cross-chain privacy infrastructure for commercial blockchain payments.
+Privara demonstrates that Fhenix CoFHE is not limited to single-chain applications. By integrating Circle CCTP V2, we enable confidential settlement from Ethereum Sepolia to Base Sepolia — positioning Fhenix's FHE technology as cross-chain privacy infrastructure for commercial blockchain payments.
 
 The protocol addresses a real market need: businesses require transaction privacy to operate commercially on public blockchains. FHE provides the cryptographic foundation for confidential computation, CCTP provides the cross-chain connectivity, and Privara combines them into a practical product for enterprise invoice settlement.
 
 ---
 
-**Extending fhEVM to cross-chain commerce**
+**Extending CoFHE to cross-chain commerce**

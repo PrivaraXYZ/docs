@@ -2,9 +2,9 @@
 
 **Confidential Invoice Settlement Protocol**
 
-Extending Zama fhEVM with cross-chain confidential payments.
+Extending Fhenix CoFHE with cross-chain confidential payments.
 
-**Testnet: January 16, 2026**
+**Testnet: January 20, 2026**
 
 ---
 
@@ -12,7 +12,7 @@ Extending Zama fhEVM with cross-chain confidential payments.
 
 Privara enables privacy-preserving commercial payments on public blockchains. Using Fully Homomorphic Encryption, invoice amounts and recipient addresses remain encrypted throughout the entire settlement lifecycle — from creation through payment verification to redemption.
 
-By integrating Circle CCTP V2, Privara extends FHE beyond single-chain limitations. Confidential transactions can originate from any CCTP-supported chain (Base, Arbitrum, Polygon, Avalanche) while settling privately on fhEVM. This positions fhEVM as cross-chain privacy infrastructure for the broader EVM ecosystem.
+By integrating Circle CCTP V2, Privara extends FHE beyond single-chain limitations. Confidential transactions can originate from Ethereum Sepolia while settling privately on Base Sepolia via Fhenix CoFHE. This positions CoFHE as cross-chain privacy infrastructure for the broader EVM ecosystem.
 
 ## The Problem
 
@@ -45,7 +45,7 @@ Fully Homomorphic Encryption enables arbitrary computation on encrypted data wit
 
 | Layer | Technology |
 |-------|------------|
-| Confidential Computation | [Zama fhEVM](https://www.zama.ai/) with TFHE scheme |
+| Confidential Computation | [Fhenix CoFHE](https://www.fhenix.io/) with FHE scheme |
 | Token Standard | [ERC-7984](https://eips.ethereum.org/EIPS/eip-7984) Confidential Tokens |
 | Cross-Chain | [Circle CCTP V2](https://www.circle.com/en/cross-chain-transfer-protocol) |
 | Settlement Asset | USDC |
@@ -58,7 +58,7 @@ Fully Homomorphic Encryption enables arbitrary computation on encrypted data wit
 | Relayer Network | Testnet Ready |
 | Web Application | Testnet Ready |
 | iOS Application | Testnet Ready |
-| Public Launch | January 16, 2026 |
+| Public Launch | January 20, 2026 |
 
 ## Links
 
@@ -66,7 +66,7 @@ Fully Homomorphic Encryption enables arbitrary computation on encrypted data wit
 - Twitter: https://x.com/PrivaraXYZ
 - GitHub: https://github.com/PrivaraXYZ
 
-## Post-Launch (January 16, 2026)
+## Post-Launch (January 20, 2026)
 
 - Whitepaper with full technical specification
 - Getting Started Guide
@@ -75,4 +75,4 @@ Fully Homomorphic Encryption enables arbitrary computation on encrypted data wit
 
 ---
 
-**Extending fhEVM to cross-chain commerce**
+**Extending CoFHE to cross-chain commerce**
