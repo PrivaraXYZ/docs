@@ -50,7 +50,7 @@ Payments credit invoices through homomorphic operations. No plaintext amounts vi
 
 ### Cross-Chain Payment Acceptance
 
-Clients can pay from Ethereum Sepolia. Cross-chain transfers settle to confidential representation on Base Sepolia via Fhenix CoFHE.
+Clients can pay from Ethereum Sepolia. Cross-chain transfers settle to confidential representation on Arbitrum Sepolia via Fhenix CoFHE.
 
 ---
 
@@ -188,7 +188,7 @@ Join the waitlist at [privara.xyz](https://privara.xyz) for early access notific
 
 ### Settlement
 
-- Base Sepolia (Fhenix CoFHE)
+- Arbitrum Sepolia (Fhenix CoFHE)
 
 ### Settlement Asset
 

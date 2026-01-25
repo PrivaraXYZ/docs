@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Privara is a confidential invoice settlement protocol that enables privacy-preserving commercial payments on public blockchains. Using Fully Homomorphic Encryption (FHE), invoice amounts and recipient addresses remain encrypted throughout the entire payment lifecycle. By integrating Circle CCTP V2, Privara extends CoFHE capabilities beyond single-chain applications — enabling confidential transactions to originate from Ethereum Sepolia while settling privately on Base Sepolia via Fhenix CoFHE.
+Privara is a confidential invoice settlement protocol that enables privacy-preserving commercial payments on public blockchains. Using Fully Homomorphic Encryption (FHE), invoice amounts and recipient addresses remain encrypted throughout the entire payment lifecycle. By integrating Circle CCTP V2, Privara extends CoFHE capabilities beyond single-chain applications — enabling confidential transactions to originate from Ethereum Sepolia while settling privately on Arbitrum Sepolia via Fhenix CoFHE.
 
 ---
 
@@ -42,7 +42,7 @@ Invoice data is stored as encrypted values using Fhenix CoFHE. All operations �
 
 ### 2. Cross-Chain Payment Origination
 
-Using Circle CCTP V2, payments can originate from Ethereum Sepolia. USDC is burned on the source chain, attested by Circle validators, and minted on Base Sepolia where it's wrapped to a confidential representation via CoFHE.
+Using Circle CCTP V2, payments can originate from Ethereum Sepolia. USDC is burned on the source chain, attested by Circle validators, and minted on Arbitrum Sepolia where it's wrapped to a confidential representation via CoFHE.
 
 ### 3. Decentralized Relayer Network
 
@@ -70,7 +70,7 @@ Schemes supporting only addition or multiplication cannot handle invoice settlem
 
 ## Cross-Chain Architecture
 
-Privara positions Fhenix CoFHE on Base Sepolia as a privacy settlement layer for the broader EVM ecosystem:
+Privara positions Fhenix CoFHE on Arbitrum Sepolia as a privacy settlement layer for the broader EVM ecosystem:
 
 ```mermaid
 flowchart TB
@@ -87,7 +87,7 @@ flowchart TB
         R1[Message Delivery]
     end
 
-    subgraph Destination["Base Sepolia + CoFHE Settlement Layer"]
+    subgraph Destination["Arbitrum Sepolia + CoFHE Settlement Layer"]
         D1[Mint USDC]
         D2[Wrap to Confidential Token]
         D3[Invoice Escrow]
@@ -165,7 +165,7 @@ Native mobile experience with secure key management, biometric authentication, a
 
 ## Conclusion
 
-Privara demonstrates that Fhenix CoFHE is not limited to single-chain applications. By integrating Circle CCTP V2, we enable confidential settlement from Ethereum Sepolia to Base Sepolia — positioning Fhenix's FHE technology as cross-chain privacy infrastructure for commercial blockchain payments.
+Privara demonstrates that Fhenix CoFHE is not limited to single-chain applications. By integrating Circle CCTP V2, we enable confidential settlement from Ethereum Sepolia to Arbitrum Sepolia — positioning Fhenix's FHE technology as cross-chain privacy infrastructure for commercial blockchain payments.
 
 The protocol addresses a real market need: businesses require transaction privacy to operate commercially on public blockchains. FHE provides the cryptographic foundation for confidential computation, CCTP provides the cross-chain connectivity, and Privara combines them into a practical product for enterprise invoice settlement.
 
