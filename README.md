@@ -12,7 +12,7 @@ Extending Fhenix CoFHE with cross-chain confidential payments.
 
 Privara enables privacy-preserving commercial payments on public blockchains. Using Fully Homomorphic Encryption, invoice amounts and recipient addresses remain encrypted throughout the entire settlement lifecycle — from creation through payment verification to redemption.
 
-By integrating Circle CCTP V2, Privara extends FHE beyond single-chain limitations. Confidential transactions can originate from Ethereum Sepolia while settling privately on Base Sepolia via Fhenix CoFHE. This positions CoFHE as cross-chain privacy infrastructure for the broader EVM ecosystem.
+By integrating Circle CCTP V2, Privara extends FHE beyond single-chain limitations. Confidential transactions can originate from Ethereum Sepolia while settling privately on Arbitrum Sepolia via Fhenix CoFHE. This positions CoFHE as cross-chain privacy infrastructure for the broader EVM ecosystem.
 
 ## The Problem
 

@@ -1,6 +1,6 @@
 # Protocol Architecture
 
-**Confidential Invoice Settlement on Base Sepolia via Fhenix CoFHE**
+**Confidential Invoice Settlement on Arbitrum Sepolia via Fhenix CoFHE**
 
 ---
 
@@ -8,7 +8,7 @@
 
 Privara is a confidential invoice settlement protocol that combines:
 
-- **FHE-based escrow** for encrypted invoice storage and settlement on Base Sepolia via Fhenix CoFHE
+- **FHE-based escrow** for encrypted invoice storage and settlement on Arbitrum Sepolia via Fhenix CoFHE
 - **Cross-chain payments** via Circle CCTP V2 for multi-chain payment origination
 - **Decentralized relay** for trustless message delivery between chains
 
@@ -43,7 +43,7 @@ flowchart LR
         C[Deliver]
     end
 
-    subgraph FHE["Base Sepolia + CoFHE"]
+    subgraph FHE["Arbitrum Sepolia + CoFHE"]
         D[Mint]
         E[Wrap]
         F[Escrow]
@@ -53,7 +53,7 @@ flowchart LR
     A --> B --> C --> D --> E --> F --> G
 ```
 
-Payment originates on Ethereum Sepolia → USDC burned and attested → Relayer delivers to Base Sepolia → Minted and wrapped to confidential token via CoFHE → Invoice escrow updated with encrypted amount → Settlement verified homomorphically.
+Payment originates on Ethereum Sepolia → USDC burned and attested → Relayer delivers to Arbitrum Sepolia → Minted and wrapped to confidential token via CoFHE → Invoice escrow updated with encrypted amount → Settlement verified homomorphically.
 
 ---
 
@@ -125,7 +125,7 @@ Privara leverages Fhenix CoFHE's FHE implementation:
 |-----------|------------|
 | Fhenix CoFHE | Correct FHE computation and key management |
 | Circle Validators | Honest attestation of cross-chain messages |
-| Base Sepolia Network | Consensus integrity |
+| Arbitrum Sepolia Network | Consensus integrity |
 
 ---
 
@@ -147,7 +147,7 @@ Decentralized operators ensure reliable cross-chain message delivery:
 
 | Network | Role |
 |---------|------|
-| Base Sepolia | CoFHE destination (core chain) |
+| Arbitrum Sepolia | CoFHE destination (core chain) |
 | Ethereum Sepolia | CCTP source chain |
 | Additional chains | Post-launch expansion |
 
