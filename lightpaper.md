@@ -1,174 +1,102 @@
-# Privara: Cross-Chain Confidential Invoice Settlement
+# ReineiraOS Litepaper
 
-**Extending Fhenix CoFHE to Cross-Chain Commerce**
+**Programmable Infrastructure for Stablecoins**
 
----
-
-## Abstract
-
-Privara is a confidential invoice settlement protocol that enables privacy-preserving commercial payments on public blockchains. Using Fully Homomorphic Encryption (FHE), invoice amounts and recipient addresses remain encrypted throughout the entire payment lifecycle. By integrating Circle CCTP V2, Privara extends CoFHE capabilities beyond single-chain applications — enabling confidential transactions to originate from Ethereum Sepolia while settling privately on Arbitrum Sepolia via Fhenix CoFHE.
+Built on Arbitrum. Powered by Fhenix FHE.
 
 ---
 
-## Problem
+## Executive Summary
 
-Commercial transactions on public blockchains expose sensitive business information. When a business issues an invoice and receives payment on-chain, the following data becomes permanently visible:
+ReineiraOS is programmable infrastructure for stablecoins. It provides the building blocks for confidential financial operations — private balances, conditional escrow, and cross-chain connectivity — without building infrastructure from scratch.
 
-- **Transaction amounts** reveal pricing strategies, contract values, and profit margins
-- **Payment patterns** expose customer relationships, payment terms, and business volumes
-- **Address linkage** connects on-chain activity to real-world business identities
-- **Timing analysis** enables front-running and competitive intelligence
-
-Current privacy solutions present significant tradeoffs:
-
-| Solution | Tradeoff |
-|----------|----------|
-| Private networks | Sacrifice composability with public DeFi |
-| Zero-knowledge proofs | Require circuit redesign for each operation |
-| Trusted execution environments | Depend on hardware security assumptions |
-| Mixing protocols | Insufficient for commercial compliance requirements |
-
-Businesses require a solution that preserves transaction privacy while maintaining composability, auditability, and regulatory compliance.
+By integrating Fully Homomorphic Encryption (FHE) for privacy and cross-chain deposit routing, ReineiraOS delivers the foundation for a complete stablecoin operations layer.
 
 ---
 
-## Solution
+## The Problem
 
-Privara introduces confidential invoice settlement using three core innovations:
+Stablecoins solved the currency problem — digital dollars that move globally, instantly, 24/7. But moving money is just the start. Real-world use cases require conditional logic, privacy, and cross-chain interoperability.
 
-### 1. FHE-Based Invoice Escrow
+Today, stablecoin infrastructure is fragmented:
 
-Invoice data is stored as encrypted values using Fhenix CoFHE. All operations — payment verification, ownership checks, redemption logic — execute on encrypted values without decryption.
+- **Transfers are simple** — no native way to hold funds conditionally
+- **Transactions are public** — balances and amounts visible to everyone
+- **Cross-chain is painful** — moving funds between chains requires manual bridging
 
-### 2. Cross-Chain Payment Origination
-
-Using Circle CCTP V2, payments can originate from Ethereum Sepolia. USDC is burned on the source chain, attested by Circle validators, and minted on Arbitrum Sepolia where it's wrapped to a confidential representation via CoFHE.
-
-### 3. Decentralized Relayer Network
-
-A network of independent operators ensures reliable cross-chain message delivery without introducing trusted intermediaries or centralization points.
+Builders who want to create stablecoin applications must stitch together multiple protocols, oracles, and custom infrastructure.
 
 ---
 
-## Why FHE
+## The Solution
 
-Fully Homomorphic Encryption enables computation on encrypted data without decryption. Privara leverages this for invoice operations:
+ReineiraOS provides a unified protocol stack for confidential, programmable stablecoins.
 
-### vs. Zero-Knowledge Proofs
-
-ZK systems require predefined circuits for each computation. Adding new invoice logic (partial payments, multi-party settlements, conditional releases) requires circuit redesign and trusted setup ceremonies. FHE enables flexible computation — new operations can be composed from existing encrypted primitives without system-wide changes.
-
-### vs. Trusted Execution Environments
-
-TEE solutions (SGX, TrustZone) rely on hardware manufacturers' security guarantees. Side-channel attacks, firmware vulnerabilities, and supply chain risks introduce trust assumptions beyond cryptography. FHE security depends solely on mathematical hardness assumptions (LWE problem), providing cryptographic rather than hardware-based guarantees.
-
-### vs. Partial Homomorphic Encryption
-
-Schemes supporting only addition or multiplication cannot handle invoice settlement requirements. Payment verification requires comparisons, redemption requires conditional logic, and ownership verification requires equality checks. Fhenix CoFHE supports all these operations, enabling flexible FHE computations for invoice settlement.
+| Capability | What It Does |
+|------------|-------------|
+| Confidential Stablecoin | Private balances and transactions via FHE |
+| Escrow Engine | Conditional holding and release of funds |
+| Cross-chain Deposits | Accept funds from multiple chains, auto-route to Reineira |
 
 ---
 
-## Cross-Chain Architecture
+## How It Works
 
-Privara positions Fhenix CoFHE on Arbitrum Sepolia as a privacy settlement layer for the broader EVM ecosystem:
+### Reineira Stablecoin
 
-```mermaid
-flowchart TB
-    subgraph Source["Source Chain"]
-        S1[Ethereum Sepolia]
-    end
+A confidential wrapper around USDC and USDT. Users deposit standard stablecoins and receive Reineira tokens. Balances and transaction amounts are encrypted using FHE via Fhenix — computations happen on encrypted data without exposing values.
 
-    subgraph Bridge["Circle CCTP V2"]
-        B1[Burn USDC]
-        B2[Validator Attestation]
-    end
+- 1:1 backed by deposited stablecoins
+- Unwrap to USDC/USDT at any time
+- Encrypted by default — balances visible only to participants
+- AML screening on deposits
 
-    subgraph Relay["Relayer Network"]
-        R1[Message Delivery]
-    end
+### Escrow Engine
 
-    subgraph Destination["Arbitrum Sepolia + CoFHE Settlement Layer"]
-        D1[Mint USDC]
-        D2[Wrap to Confidential Token]
-        D3[Invoice Escrow]
-        D4[Encrypted Settlement]
-    end
+Every payment can be held, conditioned, or reversed. Escrow is a protocol primitive — the foundation for programmable money movement.
 
-    S1 --> B1
-    B1 --> B2
-    B2 --> R1
-    R1 --> D1
-    D1 --> D2
-    D2 --> D3
-    D3 --> D4
-```
+| Mode | Use Case | Mechanism |
+|------|----------|-----------|
+| Standard | Simple holds | Deposit → Hold → Release |
+| Conditional | Complex agreements | Rule-based or oracle-triggered release |
+| Asset DVP | Tokenized assets | Atomic delivery-vs-payment for ERC-721 |
 
-### What Makes This Different
+Conditions can be time-based, signature-based, or oracle-based.
 
-**Traditional Payment**: Amount visible → Recipient visible → Transaction graph analyzable
+### Cross-chain Deposits
 
-**Privara Payment**: Amount encrypted → Recipient encrypted → Settlement verified homomorphically
+Users can fund their accounts from multiple chains. Deposits are automatically routed to the Reineira stablecoin on Arbitrum — no manual bridging required.
 
 ---
 
 ## Technology Stack
 
-### Fhenix CoFHE
-
-- **FHE Scheme**: Fully Homomorphic Encryption via Fhenix coprocessor
-- **Encrypted Primitives**: Native support for encrypted integers, addresses, and booleans
-- **Homomorphic Operations**: Arithmetic, comparison, and conditional operations on ciphertexts
-
-### ERC-7984 Confidential Tokens
-
-- Standardized interface for encrypted token balances
-- Wrapping mechanism: public USDC to confidential representation
-- Encrypted transfers between addresses
-
-### Circle CCTP V2
-
-- Trust-minimized USDC bridging via burn-and-mint
-- Validator-attested message passing
-- Sub-minute finality on supported chains
+| Layer | Technology |
+|-------|------------|
+| Settlement | Arbitrum (Ethereum L2) |
+| Privacy | Fhenix FHE Coprocessor |
+| Cross-chain | Multi-chain deposit routing |
+| Smart Contracts | Solidity + FHE extensions |
 
 ---
 
-## Product
+## Comparison
 
-Privara delivers confidential invoicing through consumer applications:
-
-### Web Application
-
-Browser-based interface for businesses to create, manage, and settle confidential invoices.
-
-### iOS Application
-
-Native mobile experience with secure key management, biometric authentication, and push notifications.
-
-### Target Users
-
-- **Enterprises** with confidential contract values and supplier relationships
-- **Freelancers** protecting rate information from clients and competitors
-- **B2B payments** requiring privacy for commercial terms and volumes
-
----
-
-## Roadmap
-
-| Milestone | Target |
-|-----------|--------|
-| Public Testnet | January 20, 2026 |
-| Security Audits | Q1 2026 |
-| Mainnet Launch | Q2 2026 (tentative) |
+|  | Stablecoins Today | ReineiraOS |
+|--|-------------------|------------|
+| **Privacy** | Public transactions | Confidential (FHE) |
+| **Logic** | Transfer only | Programmable escrow |
+| **Cross-chain** | Manual bridging | Auto-routed deposits |
+| **Integration** | Build everything yourself | One SDK, complete stack |
 
 ---
 
 ## Conclusion
 
-Privara demonstrates that Fhenix CoFHE is not limited to single-chain applications. By integrating Circle CCTP V2, we enable confidential settlement from Ethereum Sepolia to Arbitrum Sepolia — positioning Fhenix's FHE technology as cross-chain privacy infrastructure for commercial blockchain payments.
+Stablecoins changed how value moves. ReineiraOS changes what you can do with it.
 
-The protocol addresses a real market need: businesses require transaction privacy to operate commercially on public blockchains. FHE provides the cryptographic foundation for confidential computation, CCTP provides the cross-chain connectivity, and Privara combines them into a practical product for enterprise invoice settlement.
+Confidential operations. Programmable escrow. Cross-chain connectivity. The foundation for stablecoin applications.
 
 ---
 
-**Extending CoFHE to cross-chain commerce**
+*For the consumer application built on ReineiraOS, see [Privara](./app/overview.md).*

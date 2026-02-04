@@ -1,199 +1,112 @@
-# Privara Application
+# Privara
 
-**Confidential Invoicing for Business Payments**
+**The Consumer App for Programmable Stablecoins**
 
----
-
-## Introduction
-
-The Privara application provides a consumer-facing interface for creating, managing, and settling confidential invoices on public blockchains. Available on web and iOS, the application abstracts the complexity of Fhenix CoFHE operations and cross-chain payments into an intuitive invoicing workflow.
+Built on ReineiraOS. Web3 infrastructure. Web2 experience.
 
 ---
 
-## Problem
+## Overview
 
-Businesses operating on public blockchains face a fundamental tension between transparency and commercial privacy:
+Privara is the consumer application layer for ReineiraOS. It delivers a familiar payments experience — while the protocol handles confidentiality, escrow, and cross-chain operations underneath.
 
-### Exposed Business Data
-
-Every on-chain invoice payment reveals:
-
-- **Contract values** — Competitors can analyze pricing strategies
-- **Customer relationships** — Business partnerships become public knowledge
-- **Payment timing** — Cash flow patterns visible to all observers
-- **Volume data** — Revenue and growth metrics exposed
-
-### Current Workarounds
-
-| Approach | Problem |
-|----------|---------|
-| Off-chain invoicing | Loses blockchain settlement guarantees |
-| Private networks | Sacrifices composability with DeFi |
-| Obfuscation techniques | Insufficient for serious privacy requirements |
-| Manual privacy measures | Operationally complex and error-prone |
-
-Businesses need privacy-preserving invoicing that maintains the benefits of on-chain settlement.
+No seed phrases. No gas fees. No bridging. Stablecoins accessible to everyone.
 
 ---
 
-## Solution
+## The Problem
 
-Privara provides confidential invoice creation and settlement through a familiar invoicing interface:
+Stablecoins offer real advantages: instant global transfers, 24/7 availability, low fees. But the user experience limits mainstream adoption:
 
-### Encrypted Invoice Creation
+- **Wallet complexity** — Seed phrases, private keys, recovery flows
+- **Gas fees** — Unpredictable costs for every transaction
+- **Bridging friction** — Moving funds between chains is confusing and risky
+- **No privacy** — All balances and transactions visible on-chain
 
-Users create invoices with standard fields — client information, service descriptions, amounts. Sensitive fields are encrypted before on-chain storage.
-
-### Private Payment Settlement
-
-Payments credit invoices through homomorphic operations. No plaintext amounts visible on-chain during settlement.
-
-### Cross-Chain Payment Acceptance
-
-Clients can pay from Ethereum Sepolia. Cross-chain transfers settle to confidential representation on Arbitrum Sepolia via Fhenix CoFHE.
+The infrastructure has matured. Privacy and escrow are now possible on-chain. But these capabilities remain locked behind developer tools and complex interfaces.
 
 ---
 
-## Target Users
+## The Solution
 
-### Enterprises
+Privara wraps ReineiraOS capabilities in a simple, familiar interface.
 
-Organizations with confidential contract values and supplier relationships:
-
-- Vendor payments with confidential pricing terms
-- Professional services invoicing with protected rate cards
-- Supply chain payments with competitive pricing data
-
-### Freelancers
-
-Independent professionals protecting rate information:
-
-- Client invoicing without exposing rates to other clients
-- Payment history that doesn't reveal income patterns
-- Professional privacy for competitive positioning
-
-### B2B Payments
-
-Business-to-business transactions requiring commercial confidentiality:
-
-- Inter-company settlements with protected transfer pricing
-- Partnership payments with confidential terms
-- Recurring payments without pattern exposure
+| ReineiraOS Layer | Privara Experience |
+|------------------|-------------------|
+| Reineira Stablecoin (FHE) | Private balances users can see, others can't |
+| Escrow Engine | "Hold until delivery" in one tap |
+| Cross-chain Deposits | Fund from any chain, no bridging UI |
 
 ---
 
-## Platforms
+## How It Works
 
-### Web Application
+### Virtual Accounts
 
-Browser-based interface for desktop invoice management:
+Users don't manage wallets. Privara creates a virtual account layer with smart accounts underneath.
 
-- Invoice creation with encrypted amounts
-- Dashboard for tracking invoice status
-- Payment monitoring and redemption management
-- Multi-chain payment link generation
+- No seed phrases — social login, biometrics, or passkeys
+- One identity across chains
+- Recovery built-in — no risk of lost funds from lost keys
 
-### iOS Application
+### Seamless Transactions
 
-Native mobile experience:
+Send, receive, and hold confidential stablecoins without friction.
 
-- Full invoice lifecycle on mobile
-- Secure key management
-- Biometric authentication
-- Push notifications for payment events
+- Gas abstracted — users never see or pay gas fees directly
+- Bridges hidden — cross-chain deposits route automatically
+- Instant settlement
 
----
+### Escrow Payments
 
-## Key Capabilities
+Hold funds conditionally with a simple interface.
 
-### Confidential Invoice Creation
+- Escrow in one tap — funds held until conditions met
+- Time-based, signature-based, or oracle-based release
+- DVP support for tokenized asset trades
 
-Create invoices where amounts remain encrypted from creation through settlement:
+### Multi-chain Deposits
 
-- Standard invoice fields (client, description, due date)
-- Amount encrypted before on-chain storage
-- QR code generation for payment links
+Fund your Privara account from multiple chains.
 
-### Private Payment Settlement
-
-Accept payments without revealing transaction amounts:
-
-- Cross-chain payment acceptance via CCTP
-- Encrypted balance accumulation
-- Real-time status updates
-
-### Secure Redemption
-
-Withdraw settled funds with cryptographic verification:
-
-- Ownership and payment completion verified on encrypted data
-- Funds transfer only when conditions satisfied
-- No plaintext exposure during redemption
+- Use existing wallets (MetaMask, Coinbase, etc.)
+- Auto-routing to Reineira stablecoin
+- Settled confidentially on Arbitrum
+- No manual bridging required
 
 ---
 
-## User Experience
+## Use Cases
 
-### Invoice Creation Flow
+**Everyday Payments** — Send money to friends and family instantly. Split bills. Request payments. All private.
 
-1. **Client Information** — Enter recipient details
-2. **Service Details** — Describe work and enter amount
-3. **Privacy Settings** — Configure options
-4. **Preview & Publish** — Review and create on-chain
+**Freelancers & Creators** — Get paid globally with milestone-based escrow.
 
-### Payment Flow (for payers)
+**P2P Trading** — Buy and sell with escrow protection. Private transactions.
 
-1. **Receive Link** — Invoice creator shares payment link
-2. **Connect Wallet** — Standard wallet connection on any supported chain
-3. **Confirm Payment** — Approve USDC transfer
-4. **Settlement** — Cross-chain delivery to confidential escrow
-
-### Redemption Flow
-
-1. **Check Status** — View payment status
-2. **Initiate Redemption** — Request fund withdrawal
-3. **Verification** — Protocol verifies ownership and payment completion
-4. **Receive Funds** — USDC transferred to wallet
+**Cross-border Transfers** — Send money anywhere, instantly. No bank fees, no delays.
 
 ---
 
-## Security
+## Comparison
 
-- Secure key custody with no private keys on application servers
-- Encrypted storage on-chain via Fhenix CoFHE
-- Biometric authentication on iOS
-- Email-based authentication with verification
-
----
-
-## Screenshots
-
-**Available January 20, 2026**
+|  | Traditional Apps | Stablecoin Wallets | Privara |
+|--|------------------|-------------------|---------|
+| **Speed** | 1-3 days | Instant | Instant |
+| **Fees** | 2-4% | Gas + variable | Near-zero |
+| **Privacy** | Bank sees all | Public blockchain | Confidential (FHE) |
+| **Escrow** | Limited | None | Built-in |
+| **Global** | Restricted | Yes | Yes |
+| **UX** | Simple | Complex | Simple |
 
 ---
 
-## Try It
+## Conclusion
 
-**Public testnet opens January 20, 2026**
+Privara bridges the gap between powerful stablecoin infrastructure and the simplicity users expect.
 
-Join the waitlist at [privara.xyz](https://privara.xyz) for early access notification.
-
----
-
-## Supported Chains
-
-### Payment Origination
-
-- Ethereum Sepolia
-
-### Settlement
-
-- Arbitrum Sepolia (Fhenix CoFHE)
-
-### Settlement Asset
-
-- USDC (wrapped to confidential representation)
+**Confidential. Programmable. Protected.**
 
 ---
 
-**Extending CoFHE to cross-chain commerce**
+*Built on ReineiraOS. For protocol details, see the [ReineiraOS Litepaper](../lightpaper.md).*
